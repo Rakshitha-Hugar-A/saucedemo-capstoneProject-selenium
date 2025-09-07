@@ -1,4 +1,4 @@
-package com.automation.swaglabs.utils;
+package com.automation.swaglabs.listeners;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,16 +6,17 @@ import java.nio.file.Files;
 
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
+import com.automation.swaglabs.utils.DriverFactory;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 
-	public class ExtentTestListener implements ITestListener {
-	    private static ExtentReports extent = ExtentManager.getInstance();
+public class ExtentTestListener implements ITestListener{
+	
+	 private static ExtentReports extent = ExtentManager.getInstance();
 	    private static ThreadLocal<ExtentTest> test = new ThreadLocal<>();
 
 	    @Override
@@ -45,9 +46,4 @@ import com.aventstack.extentreports.Status;
 	        }
 	    }
 
-	    @Override
-	    public void onFinish(ITestContext context) {
-	        extent.flush();
-	    }
-	}
-
+}
