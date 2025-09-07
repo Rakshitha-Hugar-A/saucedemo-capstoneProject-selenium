@@ -49,6 +49,7 @@ pipeline {
         stage('Publish TestNG Extent Report') {
             steps {
                 publishHTML([
+                    allowMissing: true,                 // <--- Added
                     reportDir: "${env.REPORT_DIR}",
                     reportFiles: 'ExtentReport.html',
                     reportName: 'TestNG Extent Report',
@@ -61,6 +62,7 @@ pipeline {
         stage('Publish Cucumber Extent Report') {
             steps {
                 publishHTML([
+                    allowMissing: true,                 // <--- Added
                     reportDir: "${env.REPORT_DIR}",
                     reportFiles: 'extent-report.html',
                     reportName: 'Cucumber Extent Report',
