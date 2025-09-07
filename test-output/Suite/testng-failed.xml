@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Test(failed)">
+    <classes>
+      <class name="com.automation.swaglabs.tests.CartPageTest">
+        <methods>
+          <include name="pageSetup"/>
+          <include name="tearDown"/>
+          <include name="testCartItemCount"/>
+          <include name="setUp"/>
+          <include name="testContinueShopping"/>
+          <include name="testRemoveItemFromCart"/>
+          <include name="testCartPageTitle"/>
+          <include name="testProceedToCheckout"/>
+        </methods>
+      </class> <!-- com.automation.swaglabs.tests.CartPageTest -->
+      <class name="com.automation.swaglabs.tests.CheckoutPageTest">
+        <methods>
+          <include name="pageSetUp"/>
+          <include name="tearDown"/>
+          <include name="testCheckoutWithMissingFields"/>
+          <include name="testOrderSummaryDetals"/>
+          <include name="testOrderCompletionAndVerifyConfirmation"/>
+          <include name="testCancelButton"/>
+          <include name="setUp"/>
+          <include name="testCheckOutWithValidInfo"/>
+          <include name="testBackToHomeButton"/>
+        </methods>
+      </class> <!-- com.automation.swaglabs.tests.CheckoutPageTest -->
+      <class name="com.automation.swaglabs.tests.ProductPageTest">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="testSortProductsDescending"/>
+          <include name="testSortProductsAscending"/>
+          <include name="testCartIconNavigation"/>
+          <include name="testProductPageTitle"/>
+          <include name="testAddProductToCart"/>
+        </methods>
+      </class> <!-- com.automation.swaglabs.tests.ProductPageTest -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->
