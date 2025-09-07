@@ -24,13 +24,13 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn -B clean compile'
+                bat 'mvn -B clean compile'
             }
         }
 
         stage('Run Tests') {
             steps {
-                sh 'mvn -B test'
+                bat 'mvn -B test'
             }
         }
 
