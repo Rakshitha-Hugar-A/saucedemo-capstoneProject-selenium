@@ -13,6 +13,7 @@ public class ExtentManager {
 			spark.config().setReportName("SauceDemo Automation Report");
 			spark.config().setDocumentTitle("Test Report");
 			extent.attachReporter(spark);
+			
 		}
 		return extent;
 	}

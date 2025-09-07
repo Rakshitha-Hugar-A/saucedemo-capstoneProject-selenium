@@ -6,6 +6,7 @@ import java.nio.file.Files;
 
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
@@ -44,6 +45,11 @@ public class ExtentTestListener implements ITestListener{
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }
+	    }
+	    
+	    @Override
+	    public void onFinish(ITestContext context) {
+	        extent.flush(); // crucial: writes HTML report to disk
 	    }
 
 }
