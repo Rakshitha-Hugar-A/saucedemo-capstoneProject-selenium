@@ -17,8 +17,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'main',
-                    url: 'https://github.com/Rakshitha-Hugar-A/saucedemo-capstoneProject-selenium.git',
-                    credentialsId: 'github-pat'  // optional if repo is private
+                    url: 'https://github.com/Rakshitha-Hugar-A/saucedemo-capstoneProject-selenium.git'
             }
         }
 
