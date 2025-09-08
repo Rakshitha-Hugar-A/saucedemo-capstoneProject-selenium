@@ -49,7 +49,7 @@ pipeline {
         stage('Publish TestNG Extent Report') {
             steps {
                 publishHTML([
-                    allowMissing: true,                 // <--- Added
+                    allowMissing: true,
                     reportDir: "${env.REPORT_DIR}",
                     reportFiles: 'ExtentReport.html',
                     reportName: 'TestNG Extent Report',
@@ -62,13 +62,29 @@ pipeline {
         stage('Publish Cucumber Extent Report') {
             steps {
                 publishHTML([
-                    allowMissing: true,                 // <--- Added
+                    allowMissing: true,
                     reportDir: "${env.REPORT_DIR}",
                     reportFiles: 'extent-report.html',
                     reportName: 'Cucumber Extent Report',
                     keepAll: true,
                     alwaysLinkToLastBuild: true
                 ])
+            }
+        }
+
+        stage('Push Changes') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'github-creds', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) {
+                    bat """
+                    git config user.email "rakshithahugar@gmail.com"
+                    git config user.name "Rakshitha-Hugar-A"
+
+                    git add -A
+                    git commit -m "Automated commit from Jenkins build" || echo "No changes to commit"
+
+                    git push https://%GIT_USER%:%GIT_PASS%@github.com/Rakshitha-Hugar-A/saucedemo-capstoneProject-selenium.git main
+                    """
+                }
             }
         }
     }
