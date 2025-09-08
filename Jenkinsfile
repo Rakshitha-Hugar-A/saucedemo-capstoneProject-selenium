@@ -72,23 +72,24 @@ pipeline {
             }
         }
 
-       stage('Push Changes') {
-    steps {
-        withCredentials([usernamePassword(credentialsId: 'github-creds', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) {
-            bat """
-            git config user.email "rakshithahugar@gmail.com"
-            git config user.name "Rakshitha-Hugar-A"
+        stage('Push Changes') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'github-creds', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) {
+                    bat """
+                    git config user.email "rakshithahugar@gmail.com"
+                    git config user.name "Rakshitha-Hugar-A"
 
-            git add -A
-            git commit -m "Automated commit from Jenkins build" || echo No changes to commit
+                    git add -A
+                    git commit -m "Automated commit from Jenkins build" || echo No changes to commit
 
-            git remote set-url origin "https://%GIT_USER%:%GIT_PASS%@github.com/Rakshitha-Hugar-A/saucedemo-capstoneProject-selenium.git"
-            git push origin main
-            """
+                    git remote set-url origin "https://%GIT_USER%:%GIT_PASS%@github.com/Rakshitha-Hugar-A/saucedemo-capstoneProject-selenium.git"
+                    git push origin main
+                    """
+                }
+            }
         }
-    }
-}
 
+    } // 🔹 closes stages block
 
     post {
         always {
@@ -102,4 +103,4 @@ pipeline {
             echo "Build failed — check console and reports"
         }
     }
-}
+} // 🔹 closes pipeline block
